@@ -6,6 +6,8 @@ import Button from "~/components/ui/Button";
 import Card, { CardBody } from "~/components/ui/Card";
 import Badge from "~/components/ui/Badge";
 import { useEffect, useState } from "react";
+import { usePuterStore } from "~/lib/puter";
+import { useNavigate } from "react-router";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -16,11 +18,21 @@ export function meta({ }: Route.MetaArgs) {
 
 export default function Home() {
   const [statsVisible, setStatsVisible] = useState(false);
+  const { auth, isLoading } = usePuterStore();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoading && !auth.isAuthenticated) {
+      navigate('/auth');
+    }
+  }, [isLoading, auth.isAuthenticated, navigate]);
 
   useEffect(() => {
     const timer = setTimeout(() => setStatsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
+
+  if (isLoading || !auth.isAuthenticated) return null;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">

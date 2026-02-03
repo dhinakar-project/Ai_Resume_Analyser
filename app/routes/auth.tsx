@@ -20,8 +20,13 @@ const Auth = () => {
     }, [auth.isAuthenticated, next])
 
     return (
-        <main className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex items-center justify-center">
-            <section className="flex flex-col gap-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-12 text-center max-w-md w-full shadow-2xl relative overflow-hidden group">
+        <main className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+
+            <section className="flex flex-col gap-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center max-w-md w-full shadow-2xl relative overflow-hidden group mx-4 z-10">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
                 <div className="flex flex-col items-center gap-4 relative z-10">
