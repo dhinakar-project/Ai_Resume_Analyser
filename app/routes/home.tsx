@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "Resumind - AI-Powered Resume Analysis" },
+    { title: "AI-RESUME-ANALYSER - AI-Powered Resume Analysis" },
     { name: "description", content: "Land your dream job with ATS-optimized resumes. Get instant AI feedback and increase your interview chances by 3x." },
   ];
 }

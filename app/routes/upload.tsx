@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from 'react'
+import { type FormEvent, useState, useEffect } from 'react'
 import FileUploader from "~/components/FileUploader";
 import Navbar from "~/components/Navbar";
 import Input from "~/components/ui/Input";
@@ -14,6 +14,22 @@ const Upload = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');
     const [file, setFile] = useState<File | null>(null);
+
+    useEffect(() => {
+        if (!isLoading && !auth.isAuthenticated) {
+            navigate('/auth?next=/upload');
+        }
+    }, [isLoading, auth.isAuthenticated, navigate]);
+
+    if (isLoading) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-black text-white">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-500"></div>
+            </div>
+        );
+    }
+
+    if (!auth.isAuthenticated) return null;
 
     const handleFileSelect = (file: File | null) => {
         setFile(file)

@@ -10,7 +10,7 @@ import Badge from "~/components/ui/Badge";
 import Button from "~/components/ui/Button";
 
 export const meta = () => ([
-    { title: 'Resumind | Analysis Results' },
+    { title: 'AI-RESUME-ANALYSER | Analysis Results' },
     { name: 'description', content: 'Detailed analysis of your resume performance' },
 ])
 
@@ -25,6 +25,16 @@ const Resume = () => {
     useEffect(() => {
         if (!isLoading && !auth.isAuthenticated) navigate(`/auth?next=/resume/${id}`);
     }, [isLoading, auth.isAuthenticated, navigate, id]);
+
+    if (isLoading) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-black text-white">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-500"></div>
+            </div>
+        );
+    }
+
+    if (!auth.isAuthenticated) return null;
 
     useEffect(() => {
         const loadResume = async () => {

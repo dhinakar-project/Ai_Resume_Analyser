@@ -4,8 +4,30 @@ import ProgressBar, { CircularProgress } from "~/components/ui/ProgressBar";
 import { Link } from "react-router";
 import { useState } from "react";
 
+import { usePuterStore } from "~/lib/puter";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+
 export default function Dashboard() {
+    const { auth, isLoading } = usePuterStore();
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('overview');
+
+    useEffect(() => {
+        if (!isLoading && !auth.isAuthenticated) {
+            navigate('/auth?next=/dashboard');
+        }
+    }, [isLoading, auth.isAuthenticated, navigate]);
+
+    if (isLoading) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-black text-white">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-500"></div>
+            </div>
+        );
+    }
+
+    if (!auth.isAuthenticated) return null;
 
     // Dummy data
     const atsScore = 87;
@@ -25,7 +47,7 @@ export default function Dashboard() {
             <aside className="w-64 border-r border-white/10 p-6 flex-shrink-0">
                 <Link to="/" className="flex items-center gap-2 mb-8">
                     <div className="text-2xl font-bold bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent">
-                        RESUMIND
+                        AI-RESUME-ANALYSER
                     </div>
                 </Link>
 
@@ -237,8 +259,8 @@ function SidebarItem({
     href?: string;
 }) {
     const className = `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${active
-            ? 'bg-brand-500 text-white'
-            : 'text-gray-400 hover:bg-white/10 hover:text-white'
+        ? 'bg-brand-500 text-white'
+        : 'text-gray-400 hover:bg-white/10 hover:text-white'
         }`;
 
     if (href) {

@@ -7,11 +7,34 @@ import { Link } from "react-router";
 import { useState, useMemo } from "react";
 import { templates, categories, experienceLevels, companyTypes, type Template } from "~/data/templates";
 
+import { usePuterStore } from "~/lib/puter";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+
 export default function Templates() {
+    const { auth, isLoading } = usePuterStore();
+    const navigate = useNavigate();
+
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedExperience, setSelectedExperience] = useState<string[]>([]);
     const [selectedCompanyTypes, setSelectedCompanyTypes] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (!isLoading && !auth.isAuthenticated) {
+            navigate('/auth?next=/templates');
+        }
+    }, [isLoading, auth.isAuthenticated, navigate]);
+
+    if (isLoading) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-black text-white">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-500"></div>
+            </div>
+        );
+    }
+
+    if (!auth.isAuthenticated) return null;
 
     // Filter templates based on selections
     const filteredTemplates = useMemo(() => {
