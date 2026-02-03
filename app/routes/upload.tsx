@@ -1,5 +1,7 @@
 import { type FormEvent, useState } from 'react'
 import FileUploader from "~/components/FileUploader";
+import Navbar from "~/components/Navbar";
+import Input from "~/components/ui/Input";
 import { usePuterStore } from "~/lib/puter";
 import { useNavigate } from "react-router";
 import { convertPdfToImage } from "~/lib/pdf2img";
@@ -200,26 +202,8 @@ const Upload = () => {
     }
 
     return (
-        <main className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
-            {/* Navbar */}
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between py-4">
-                        <a href="/" className="text-2xl font-bold bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent">
-                            RESUMIND
-                        </a>
-
-                        <div className="flex items-center gap-6">
-                            <a href="/templates" className="text-gray-300 hover:text-white transition-colors">
-                                Templates
-                            </a>
-                            <a href="/dashboard" className="text-gray-300 hover:text-white transition-colors">
-                                Dashboard
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+        <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white selection:bg-brand-500/30">
+            <Navbar />
 
             <section className="pt-32 pb-20 px-4">
                 <div className="max-w-3xl mx-auto">
@@ -253,12 +237,11 @@ const Upload = () => {
                                     <label htmlFor="company-name" className="block text-sm font-medium text-gray-300">
                                         Company Name
                                     </label>
-                                    <input
+                                    <Input
                                         type="text"
                                         name="company-name"
                                         id="company-name"
                                         placeholder="e.g., Google, Microsoft, Amazon"
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                     />
                                 </div>
 
@@ -267,12 +250,11 @@ const Upload = () => {
                                     <label htmlFor="job-title" className="block text-sm font-medium text-gray-300">
                                         Job Title
                                     </label>
-                                    <input
+                                    <Input
                                         type="text"
                                         name="job-title"
                                         id="job-title"
                                         placeholder="e.g., Software Engineer, Data Scientist"
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                     />
                                 </div>
 
@@ -286,7 +268,7 @@ const Upload = () => {
                                         name="job-description"
                                         id="job-description"
                                         placeholder="Paste the job description here..."
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all resize-none"
+                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:shadow-[0_0_40px_-5px_rgba(99,102,241,0.4)] hover:border-brand-500/50 hover:shadow-[0_0_30px_-5px_rgba(99,102,241,0.3)] transition-all resize-none"
                                     />
                                 </div>
 

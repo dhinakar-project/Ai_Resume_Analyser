@@ -14,7 +14,7 @@ export default function Card({
     children,
     ...props
 }: CardProps) {
-    const baseStyles = 'rounded-xl transition-all duration-200';
+    const baseStyles = 'rounded-3xl transition-all duration-200';
 
     const variants = {
         default: 'bg-white/5 border border-white/10',
@@ -22,7 +22,7 @@ export default function Card({
         elevated: 'bg-white/10 shadow-xl border border-white/20',
     };
 
-    const hoverStyles = hover ? 'hover:scale-[1.02] hover:shadow-2xl hover:border-white/30 cursor-pointer' : '';
+    const hoverStyles = hover ? 'hover:scale-[1.02] hover:shadow-[0_0_40px_-5px_rgba(99,102,241,0.4)] hover:border-brand-500/30 cursor-pointer' : '';
 
     return (
         <div

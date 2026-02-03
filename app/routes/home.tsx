@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
+import Navbar from "~/components/Navbar";
 import Container from "~/components/layout/Container";
 import Button from "~/components/ui/Button";
 import Card, { CardBody } from "~/components/ui/Card";
@@ -24,29 +25,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10">
-        <Container>
-          <div className="flex items-center justify-between py-4">
-            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent">
-              RESUMIND
-            </Link>
-
-            <div className="flex items-center gap-6">
-              <Link to="/templates" className="text-gray-300 hover:text-white transition-colors">
-                Templates
-              </Link>
-              <Link to="/dashboard" className="text-gray-300 hover:text-white transition-colors">
-                Dashboard
-              </Link>
-              <Link to="/upload">
-                <Button variant="primary" size="sm">
-                  Upload Resume
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">

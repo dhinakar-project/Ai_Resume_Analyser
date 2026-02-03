@@ -30,16 +30,16 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
         <div className="w-full">
             <div {...getRootProps()} className={`
                 relative p-8 text-center transition-all duration-300 cursor-pointer
-                bg-white/5 backdrop-blur-sm border-2 border-dashed rounded-xl
-                ${isDragActive ? 'border-brand-500 bg-brand-500/10' : 'border-white/20 hover:border-white/40'}
+                bg-white/5 backdrop-blur-sm border-2 border-dashed rounded-3xl
+                ${isDragActive ? 'border-brand-500 bg-brand-500/10 shadow-[0_0_50px_-10px_rgba(99,102,241,0.5)]' : 'border-white/20 hover:border-brand-500/50 hover:shadow-[0_0_40px_-5px_rgba(99,102,241,0.4)]'}
             `}>
                 <input {...getInputProps()} />
 
                 <div className="space-y-4">
                     {file ? (
-                        <div className="flex items-center justify-between p-4 bg-white/10 rounded-lg" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex items-center justify-between p-4 bg-white/10 rounded-2xl" onClick={(e) => e.stopPropagation()}>
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-red-500/20 rounded flex items-center justify-center">
+                                <div className="w-10 h-10 bg-red-500/20 rounded-xl flex items-center justify-center">
                                     <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                     </svg>
@@ -54,7 +54,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                                 </div>
                             </div>
                             <button
-                                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                                className="p-2 hover:bg-white/10 rounded-xl transition-colors"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     onFileSelect?.(null);
