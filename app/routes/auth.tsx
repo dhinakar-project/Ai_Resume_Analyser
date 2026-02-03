@@ -12,7 +12,7 @@ const Auth = () => {
     const { isLoading, auth } = usePuterStore();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const next = searchParams.get('next') || '/dashboard';
+    const next = searchParams.get('next') || '/';
     const navigate = useNavigate();
 
     useEffect(() => {
