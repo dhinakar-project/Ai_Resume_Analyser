@@ -98,11 +98,18 @@ const Navbar = () => {
                                 )}
                             </div>
                         ) : (
-                            <Link to="/upload">
-                                <Button variant="primary" size="sm">
-                                    Upload Resume
-                                </Button>
-                            </Link>
+                            <div className="flex items-center gap-4">
+                                <Link to="/auth">
+                                    <button className="text-gray-300 hover:text-white transition-colors font-medium">
+                                        Log In
+                                    </button>
+                                </Link>
+                                <Link to="/upload">
+                                    <Button variant="primary" size="sm">
+                                        Upload Resume
+                                    </Button>
+                                </Link>
+                            </div>
                         )}
                     </div>
                 </div>
